@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.or.nextit.blog.blog.BlogMapper">
+
+    <resultMap id="blogMap" type="blogVO">
+        <result property="no" column="no"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="writer" column="writer"/>
+        <result property="name" column="user_name"/>
+        <result property="registerDate" column="register_date"/>
+        <collection property="fileList" select="selectFiles" column="no" javaType="list" ofType="fileVO"/>
+        <collection property="commentList" select="selectComments" column="no" javaType="list" ofType="commentVO"/>
+
+    </resultMap>
+
+    <!-- list -->
+    <select id="selectBlogs" resultType="blogVO">
+    SELECT
+        NO
+        ,TITLE
+        ,WRITER
+        ,REGISTER_DATE
+    FROM
+        BLOG
+    ORDER BY
+        REGISTER_DATE
+    </select>
+<!-- view -->
+    <select id="selectBlog" parameterType="int" resultMap="blogMap">
+        SELECT
+            B.NO
+            ,B.TITLE
+            ,B.CONTENT
+            ,B.WRITER
+            ,U.USER_NAME
+            ,B.REGISTER_DATE
+        FROM
+            BLOG B
+            INNER JOIN BLOG_USER U  ON B.WRITER = U.USER_EMAIL
+        WHERE
+            B.NO = #{no}
+    </select>
+    <!-- 게시글 보기view에 해당하는 쿼리문(selectBoard)과, 첨부파일을 가져오는 쿼리(selectFiles) 두개를
+                mybatis가 합쳐줄 수 있다 -->
+    <select id="selectFiles" parameterType="long" resultType="fileVO">
+        SELECT
+            FILE_NO
+            , BOARD_NO
+            , FILE_PATH
+            , FILE_NAME
+            , ORIGINAL_NAME
+            , REGISTER_DATE
+            , FILE_SIZE
+        FROM
+            BLOG_FILE
+        WHERE
+            BOARD_NO = #{boardNo}
+        ORDER BY
+            REGISTER_DATE
+    </select>
+
+    <!-- 댓글 조회 -->
+    <!--resultMap에 commentList추가해줌-->
+    <select id="selectComments" parameterType="long" resultType="commentVO">
+        SELECT
+            C.NO
+            , C.BOARD_NO
+            , C.CONTENTS
+            , C.WRITER
+            , U.USER_NAME
+            , C.REGISTER_DATE
+        FROM
+            BLOG_COMMENTS C
+            INNER JOIN BLOG_USER U ON C.WRITER = U.USER_EMAIL
+        WHERE
+            C.BOARD_NO = #{boardNo}
+        ORDER BY
+            C.REGISTER_DATE
+    </select>
+</mapper>

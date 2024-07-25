@@ -1,4 +1,4 @@
-package kr.or.nextit.blog.blog;
+package kr.or.nextit.spring_project.blog;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,4 +1,4 @@
-package kr.or.nextit.blog.blog;
+package kr.or.nextit.spring_project.blog;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;

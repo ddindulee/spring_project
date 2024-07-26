@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -11,7 +12,7 @@
     </style>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/fragments/header.jsp"/>
+<jsp:include page="/WEB-INF/views/fragments/header .jsp"/>
 <div class="container py-4">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Offcanvas navbar large">
         <div class="container-fluid">

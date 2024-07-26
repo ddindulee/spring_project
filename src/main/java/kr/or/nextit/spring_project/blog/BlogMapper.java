@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface BlogMapper {
 
-    List<BlogVO> selectBlogs();
+    List<BlogVO> selectBlogs(BlogVO blogVO);
 
     BlogVO selectBlog(int no);
 }

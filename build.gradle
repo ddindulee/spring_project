@@ -43,6 +43,11 @@ dependencies {
     testImplementation 'io.projectreactor:reactor-test'     // 테스트 할 때만 사용하는 것
     testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+//
+////    providedCompile 'javax.servlet:javax.servlet-api:4.0.1' // Servlet API
+//    implementation 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.3' // JSP API
+//    implementation 'javax.servlet:jstl:1.2' // JSTL (JavaServer Pages Standard Tag Library)
 }
 
 tasks.named('test') {

@@ -16,14 +16,14 @@
     </resultMap>
 
     <!-- list -->
-    <select id="selectBlogs" resultType="blogVO">
+    <select id="selectBlogs" parameterType="blogVO" resultType="blogVO">
     SELECT
         NO
         ,TITLE
         ,WRITER
         ,REGISTER_DATE
     FROM
-        BLOG
+        BLOG_BOARD
     ORDER BY
         REGISTER_DATE
     </select>

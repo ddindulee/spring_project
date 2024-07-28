@@ -16,6 +16,14 @@
     </insert>
 
 <!--조회-->
+
+    <select id="getList" resultType="boardVO">
+        <![CDATA[
+            select * from BLOG_BOARD where no > 0
+        ]]>
+    </select>
+
+
     <select id="read" resultType="boardVO">
         select * from BLOG_BOARD where no = #{no}
     </select>
@@ -33,4 +41,5 @@
         writer = #{writer}
         WHERE no = #{no}
     </update>
+
 </mapper>

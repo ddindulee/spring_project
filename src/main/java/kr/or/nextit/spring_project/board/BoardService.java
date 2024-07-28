@@ -2,6 +2,7 @@ package kr.or.nextit.spring_project.board;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +11,9 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class BoardService {
-    private final BoardMapper mapper;
+
+    @Autowired
+    private BoardMapper mapper;
 
 //    public int insertBoard(BoardVO board) {
 ////        int insertedValue = mapper.insertMemo(boardVO);
@@ -25,7 +28,7 @@ public class BoardService {
     }
 
     public BoardVO get(int no){
-        return  mapper.read(no);
+        return mapper.read(no);
     }
 
     public boolean modify(BoardVO board){

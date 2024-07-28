@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: user
@@ -10,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Insert title here</title>
+    <title>게시판</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
@@ -34,36 +36,18 @@
                             <th>작성자</th>
                             <th>작성일자</th>
                         </tr>
-                        </tr>
+                        <c:forEach items="${list}" var="board">
+                            <tr>
+                                <td><c:out value="${board.no}"/></td>
+                                <td><c:out value="${board.title}"/></td>
+                                <td><c:out value="${board.writer}"/></td>
+                                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}"/></td>
+                                <td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updateDate}"/></td>
+                            </tr>
+                        </c:forEach>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>Alice</td>
-                            <td>10</td>
-                            <td>11</td>
-                            <td>11</td>
-                        </tr>
-                        <tr>
-                            <td>Bob</td>
-                            <td>4</td>
-                            <td>3</td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>Charlie</td>
-                            <td>7</td>
-                            <td>9</td>
-                            <td>9</td>
-                        </tr>
-                        </tbody>
-                        <tfoot>
-                        <tr>
-                            <td>Totals</td>
-                            <td>21</td>
-                            <td>23</td>
-                            <td>23</td>
-                        </tr>
-                        </tfoot>
+
+
                     </table>
                 </article>
             </div>

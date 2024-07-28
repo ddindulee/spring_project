@@ -16,4 +16,11 @@ public class BoardVO {
 //    private List<FileVO> fileList;
 //    private List<CommentVO> commentList;
 //
+
+
+    // DB의 테이블에 있는 컬럼을 TITLE, CONTENT, WRITER, NAME, REGISTER_DATE
+    // java vo에 변수 title, content, writer, name, registerDate
 }
+
+
+
